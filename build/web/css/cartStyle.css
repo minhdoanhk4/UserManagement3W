@@ -186,3 +186,73 @@ body {
     font-size: 1.2rem;
     font-style: italic;
 }
+
+/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;          /* Mở rộng khung chứa ra sát mép màn hình */
+        padding: 15px;       /* Giảm padding để tiết kiệm diện tích */
+        margin: 20px auto;
+    }
+
+    /* --- Header: Chuyển tên trang và nút Back thành dọc --- */
+    .cart-header-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        align-items: stretch; /* Kéo dãn phần tử con */
+    }
+
+    .page-title {
+        font-size: 24px;      /* Giảm cỡ chữ tiêu đề */
+    }
+
+    .shopping-btn {
+        justify-content: center; /* Căn giữa nội dung nút */
+        padding: 12px;           /* Nút to hơn */
+        width: 100%;             /* Nút dài hết màn hình */
+        box-sizing: border-box;
+    }
+
+    /* --- Bảng (Table): Cho phép cuộn ngang --- */
+    /* Vì bảng có nhiều cột, cách tốt nhất trên mobile là cho cuộn ngang */
+    .cart-table {
+        display: block;          /* Biến table thành block để cuộn được */
+        width: 100%;
+        overflow-x: auto;        /* Cho phép cuộn ngang */
+        -webkit-overflow-scrolling: touch; /* Cuộn mượt */
+        white-space: nowrap;     /* Giữ nội dung trên 1 dòng */
+    }
+
+    /* Tăng vùng bấm cho các nút trong bảng */
+    .quantity-input {
+        width: 60px;
+        padding: 10px;       /* Ô nhập số lượng to hơn */
+        font-size: 16px;
+    }
+
+    .edit-btn, .remove-btn {
+        padding: 8px 12px;   /* Nút sửa/xóa to hơn chút */
+        font-size: 13px;
+    }
+
+    /* --- Footer: Tổng tiền và nút Checkout --- */
+    .cart-footer-bar {
+        flex-direction: column; /* Xếp dọc */
+        gap: 20px;
+        align-items: stretch;   /* Kéo dãn full màn hình */
+        text-align: center;
+    }
+
+    .cart-summary p {
+        font-size: 18px;     /* Chữ tổng tiền to rõ */
+    }
+
+    .checkout-btn {
+        width: 100%;            /* Nút thanh toán to hết cỡ */
+        padding: 15px;          /* Dày hơn dễ bấm */
+        font-size: 18px;        /* Chữ to */
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

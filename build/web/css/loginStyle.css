@@ -152,3 +152,40 @@ a {
     font-weight: 500;
 }
 a:hover { text-decoration: underline; }
+
+/* --- GIỮ NGUYÊN CODE CŨ CỦA BẠN --- */
+/* ... (Code cũ từ @import đến hết phần a:hover) ... */
+
+/* --- THÊM PHẦN NÀY VÀO CUỐI FILE --- */
+
+/* Responsive cho Mobile (Màn hình dưới 768px) */
+@media screen and (max-width: 768px) {
+    .boxLogin {
+        width: 90%;          /* Chiếm 90% màn hình thay vì cố định */
+        max-width: none;     /* Bỏ giới hạn cũ nếu cần */
+        padding: 25px 20px;  /* Giảm padding để có thêm chỗ viết */
+        margin-top: 20px;    /* Cách top một chút */
+    }
+
+    .boxLogin h1 {
+        font-size: 22px;     /* Giảm cỡ chữ tiêu đề chút */
+    }
+
+    /* Tăng kích thước ô input để dễ bấm bằng ngón tay */
+    .boxLogin input[type="text"],
+    .boxLogin input[type="password"] {
+        padding: 15px;       /* Ô to hơn dễ bấm */
+        font-size: 16px;     /* Chữ to rõ ràng (ngăn iPhone tự zoom) */
+    }
+
+    /* Nút bấm to hơn */
+    input[type="submit"], input[type="reset"] {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    /* Google button container responsive */
+    .google-btn-wrap iframe {
+        max-width: 100% !important; /* Đảm bảo nút Google không bị tràn */
+    }
+}

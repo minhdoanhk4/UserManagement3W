@@ -139,3 +139,63 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px 10px;     /* Thêm chút khoảng cách lề */
+        justify-content: flex-start; /* Đẩy nội dung lên trên thay vì giữa */
+        height: auto;           /* Cho phép trang dài ra để cuộn */
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    /* Xử lý bảng hóa đơn: Cho cuộn ngang */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 20px;
+    }
+    
+    table th, table td {
+        padding: 12px;       /* Giảm padding ô chút cho đỡ tốn chỗ */
+    }
+
+    /* Tổng tiền căn giữa */
+    h2 {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    /* --- Nút bấm to, xếp dọc --- */
+    form {
+        display: block;      /* Form chiếm hết dòng */
+        width: 100%;
+        margin: 10px 0;      /* Cách nhau ra */
+    }
+
+    input[type="submit"] {
+        width: 100%;         /* Nút to 100% chiều ngang */
+        padding: 16px;       /* Nút dày dễ bấm */
+        font-size: 18px;     /* Chữ to */
+        margin: 0;           /* Bỏ margin cũ */
+        box-sizing: border-box;
+    }
+
+    /* Nút Confirm (Màu xanh) */
+    input[type="submit"][value="Confirm"] {
+        margin-bottom: 10px; /* Cách nút dưới 1 đoạn */
+    }
+    
+    /* Font chữ thông báo lỗi to hơn */
+    font[color="red"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

@@ -267,3 +267,78 @@ body {
     border: 1px solid #a7f3d0;
 }
 
+/* --- GIỮ NGUYÊN CODE CŨ CỦA BẠN --- */
+/* ... */
+
+/* --- THÊM PHẦN NÀY VÀO CUỐI FILE --- */
+
+/* Responsive cho Mobile */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 10px auto;   /* Giảm lề ngoài */
+        padding: 0 10px;     /* Giảm lề trong */
+    }
+
+    /* --- Header: Chuyển từ ngang sang dọc --- */
+    .shopping-header {
+        flex-direction: column; /* Xếp chồng lên nhau */
+        gap: 20px;              /* Khoảng cách giữa các phần */
+        padding: 20px 15px;
+        text-align: center;     /* Căn giữa nội dung */
+    }
+
+    .action-section {
+        flex-direction: column; /* Các nút xếp dọc */
+        width: 100%;
+        gap: 10px;
+    }
+
+    /* Form tìm kiếm full chiều rộng */
+    .search-form {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .search-input {
+        width: 100%; /* Input co giãn hết cỡ */
+        font-size: 16px; /* Chữ to dễ đọc */
+        padding: 12px 15px;
+    }
+
+    /* Các nút bấm to ra để dễ chạm */
+    .btn-search, .btn-view-cart, .btn-back-user {
+        width: 100%;            /* Nút dài hết màn hình */
+        padding: 14px;          /* Nút dày hơn */
+        font-size: 14px;
+        box-sizing: border-box; /* Tính padding vào độ rộng */
+        text-align: center;
+    }
+
+    /* --- Xử lý Bảng (Table) --- */
+    /* Tạo thanh cuộn ngang cho bảng khi màn hình quá nhỏ */
+    .table-container {
+        overflow-x: auto;       /* Cho phép cuộn ngang */
+        -webkit-overflow-scrolling: touch; /* Cuộn mượt trên iPhone */
+        margin-bottom: 20px;
+    }
+
+    .product-table th, .product-table td {
+        padding: 12px 10px;    /* Giảm padding ô bảng */
+        white-space: nowrap;    /* Giữ nội dung trên 1 dòng để bảng đẹp hơn */
+    }
+    
+    .product-table {
+        min-width: 600px;       /* Đặt độ rộng tối thiểu để bảng không bị bóp méo */
+    }
+
+    /* Input số lượng to hơn */
+    .qty-input {
+        width: 50px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .btn-add {
+        padding: 10px 15px;
+    }
+}

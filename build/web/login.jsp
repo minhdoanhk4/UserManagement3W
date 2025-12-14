@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>LOGIN PAGE</title>
         <link rel="stylesheet" href="css/loginStyle.css"/>
         <script src="https://accounts.google.com/gsi/client" async defer></script>

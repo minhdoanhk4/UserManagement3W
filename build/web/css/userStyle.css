@@ -148,3 +148,57 @@ body {
     color: rgba(255,255,255,0.4);
     font-size: 13px;
 }
+
+/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px 15px; /* Giảm padding lề */
+    }
+
+    /* --- Header: Tên user và nút Logout xếp dọc --- */
+    .header-user {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .welcome-text {
+        font-size: 16px; /* Chữ to hơn chút */
+    }
+
+    .logout-btn {
+        width: 100%;           /* Nút to 100% màn hình */
+        padding: 12px;         /* Dày hơn */
+        box-sizing: border-box;
+    }
+
+    /* --- Thẻ thông tin (User Card) --- */
+    .user-card {
+        padding: 25px 20px;
+    }
+
+    .user-card p {
+        flex-direction: column; /* Chuyển Label và Value thành dọc */
+        align-items: flex-start;/* Căn trái */
+        gap: 5px;               /* Khoảng cách giữa tiêu đề và nội dung */
+    }
+
+    .user-card label {
+        font-size: 13px;
+        color: var(--secondary); /* Đổi màu label để dễ phân biệt */
+        opacity: 0.8;
+    }
+
+    .user-card span {
+        font-size: 18px;        /* Nội dung chính to rõ */
+        padding-left: 0;
+    }
+
+    /* --- Nút Shopping to đùng --- */
+    .shopping {
+        width: 100%;
+        padding: 16px;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+}

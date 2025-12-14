@@ -110,3 +110,32 @@ body {
     color: rgba(255,255,255,0.7);
     font-size: 12px;
 }
+
+/* Sửa trực tiếp class .boxReset trong code gốc hoặc ghi đè: */
+.boxReset {
+    /* Code cũ... */
+    background: var(--white);
+    /* width: 400px;  <-- XÓA DÒNG CŨ NÀY ĐI hoặc comment lại */ 
+    
+    /* Thay bằng: */
+    width: 90%;         /* Chiếm 90% màn hình */
+    max-width: 400px;   /* Nhưng không quá 400px trên máy tính */
+    box-sizing: border-box; /* Để padding không làm phình khung */
+}
+
+/* Thêm Media Query cho màn hình nhỏ */
+@media screen and (max-width: 480px) {
+    .boxReset {
+        padding: 25px 20px; /* Giảm padding */
+    }
+
+    .btn-container {
+        flex-direction: column; /* Xếp nút dọc */
+    }
+
+    .btn-container input[type="submit"],
+    .btn-container input[type="button"] {
+        width: 100%;
+        padding: 14px; /* Nút to dễ bấm */
+    }
+}

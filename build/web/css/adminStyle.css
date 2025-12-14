@@ -203,3 +203,87 @@ table a:hover {
     border-color: var(--primary);
     pointer-events: none;
 }
+
+/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px; /* Tận dụng tối đa diện tích */
+    }
+
+    /* --- Header Admin --- */
+    .header-container {
+        flex-direction: column; /* Xếp dọc các thành phần */
+        padding: 20px 15px;
+        gap: 15px;
+        height: auto;
+    }
+
+    .center-actions {
+        flex-direction: column; /* Form search và nút Logout xếp dọc */
+        width: 100%;
+        gap: 10px;
+    }
+
+    /* Form tìm kiếm full màn hình */
+    .header-search-form {
+        display: flex;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .header-search-form input[type="text"] {
+        flex: 1;            /* Input tự co giãn hết cỡ */
+        width: auto;        /* Bỏ chiều rộng cố định cũ */
+        padding: 12px;      /* Dày hơn */
+    }
+
+    .header-search-form input[type="submit"] {
+        padding: 12px 20px;
+    }
+
+    .logout-btn {
+        width: 100%;        /* Nút logout to dễ bấm */
+        padding: 12px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* --- Bảng dữ liệu (Table) --- */
+    .table {
+        padding: 10px;
+        overflow-x: auto;   /* Quan trọng: Cho phép cuộn ngang */
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 12px 8px;
+        white-space: nowrap; /* Giữ nội dung thẳng hàng, không xuống dòng */
+    }
+
+    /* Tăng kích thước ô input để sửa cho dễ */
+    table input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        min-width: 100px; /* Đảm bảo ô không bị bé quá */
+    }
+
+    /* Nút Update/Delete to hơn */
+    table input[type="submit"], table a {
+        padding: 10px 14px;
+        font-size: 13px;
+        display: block;      /* Mỗi nút 1 dòng cho dễ bấm */
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    /* Pagination (Phân trang) */
+    .pagination {
+        gap: 8px;
+        flex-wrap: wrap; /* Nếu nhiều trang quá thì xuống dòng */
+    }
+    
+    .pagination a {
+        padding: 10px 15px; /* Nút to bấm cho chuẩn */
+        font-size: 16px;
+    }
+}
