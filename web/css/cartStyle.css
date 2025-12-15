@@ -187,72 +187,95 @@ body {
     font-style: italic;
 }
 
-/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+/* --- RESPONSIVE MOBILE (CARD VIEW) --- */
 @media screen and (max-width: 768px) {
     .container {
-        width: 95%;          /* Mở rộng khung chứa ra sát mép màn hình */
-        padding: 15px;       /* Giảm padding để tiết kiệm diện tích */
-        margin: 20px auto;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 15px;
+        box-sizing: border-box;
     }
 
-    /* --- Header: Chuyển tên trang và nút Back thành dọc --- */
     .cart-header-bar {
         flex-direction: column;
         gap: 15px;
         text-align: center;
-        align-items: stretch; /* Kéo dãn phần tử con */
-    }
-
-    .page-title {
-        font-size: 24px;      /* Giảm cỡ chữ tiêu đề */
     }
 
     .shopping-btn {
-        justify-content: center; /* Căn giữa nội dung nút */
-        padding: 12px;           /* Nút to hơn */
-        width: 100%;             /* Nút dài hết màn hình */
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
         box-sizing: border-box;
     }
 
-    /* --- Bảng (Table): Cho phép cuộn ngang --- */
-    /* Vì bảng có nhiều cột, cách tốt nhất trên mobile là cho cuộn ngang */
+    /* CARD VIEW CHO GIỎ HÀNG */
     .cart-table {
-        display: block;          /* Biến table thành block để cuộn được */
-        width: 100%;
-        overflow-x: auto;        /* Cho phép cuộn ngang */
-        -webkit-overflow-scrolling: touch; /* Cuộn mượt */
-        white-space: nowrap;     /* Giữ nội dung trên 1 dòng */
+        display: block;
+    }
+    .cart-table thead { display: none; }
+    .cart-table tbody, .cart-table tr, .cart-table td { display: block; width: 100%; box-sizing: border-box; }
+
+    .cart-table tr {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 20px;
+        padding: 15px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     }
 
-    /* Tăng vùng bấm cho các nút trong bảng */
-    .quantity-input {
-        width: 60px;
-        padding: 10px;       /* Ô nhập số lượng to hơn */
-        font-size: 16px;
+    .cart-table td {
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
     }
+    .cart-table td:last-child { border-bottom: none; }
 
-    .edit-btn, .remove-btn {
-        padding: 8px 12px;   /* Nút sửa/xóa to hơn chút */
+    /* Label giả lập */
+    .cart-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #64748b;
         font-size: 13px;
     }
 
-    /* --- Footer: Tổng tiền và nút Checkout --- */
+    /* Gán nhãn (Khớp với viewCart.jsp) */
+    .cart-table td:nth-of-type(1)::before { content: "No."; }
+    .cart-table td:nth-of-type(2)::before { content: "ID"; }
+    .cart-table td:nth-of-type(3)::before { content: "Product"; }
+    .cart-table td:nth-of-type(4)::before { content: "Price"; }
+    .cart-table td:nth-of-type(5)::before { content: "Quantity"; }
+    .cart-table td:nth-of-type(6)::before { content: "Total"; }
+    /* Hai nút Edit/Remove nằm cuối */
+    .cart-table td:nth-of-type(7), 
+    .cart-table td:nth-of-type(8) { 
+        justify-content: flex-end; 
+        padding-bottom: 0;
+        border: none;
+    }
+    .cart-table td:nth-of-type(7)::before,
+    .cart-table td:nth-of-type(8)::before { content: ""; } /* Không cần nhãn cho nút */
+
+    .quantity-input {
+        width: 60px;
+        padding: 8px;
+    }
+
     .cart-footer-bar {
-        flex-direction: column; /* Xếp dọc */
-        gap: 20px;
-        align-items: stretch;   /* Kéo dãn full màn hình */
+        flex-direction: column;
+        gap: 15px;
         text-align: center;
     }
-
-    .cart-summary p {
-        font-size: 18px;     /* Chữ tổng tiền to rõ */
-    }
-
     .checkout-btn {
-        width: 100%;            /* Nút thanh toán to hết cỡ */
-        padding: 15px;          /* Dày hơn dễ bấm */
-        font-size: 18px;        /* Chữ to */
-        text-align: center;
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
         box-sizing: border-box;
     }
 }

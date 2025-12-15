@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/fa3w/controllers/DeleteController.java</file>
-            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/fa3w/controllers/LoginController.java</file>
-            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/fa3w/controllers/UpdateController.java</file>
-            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/faw3/orders/OrderDAO.java</file>
-            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/fa3w/users/UserDAO.java</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/checkOut.jsp</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/css/checkoutStyle.css</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/create.jsp</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/src/java/fa3w/controllers/CreateController.java</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/css/adminStyle.css</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/css/cartStyle.css</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/css/shoppingStyle.css</file>
+            <file>file:/C:/Users/msi2k/Documents/UserManagement3W/web/shopping.jsp</file>
         </group>
     </open-files>
 </project-private>

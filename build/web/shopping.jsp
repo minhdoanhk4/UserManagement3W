@@ -54,6 +54,23 @@
                     </form>
                 </div>
             </div>
+            <%
+                String error = (String) request.getAttribute("ERROR");
+                if (error != null && !error.isEmpty()) {
+            %>
+            <div class="message-box msg-error">
+                <%= error%>
+            </div>
+            <% } %>
+
+            <%
+                String message = (String) request.getAttribute("MESSAGE");
+                if (message != null && !message.isEmpty()) {
+            %>
+            <div class="message-box msg-success">
+                <%= message%>
+            </div>
+            <% }%>
 
             <%
                 List<ProductDTO> listProduct = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
@@ -102,24 +119,6 @@
             <%
                 }
             %>
-
-            <%
-                String error = (String) request.getAttribute("ERROR");
-                if (error != null && !error.isEmpty()) {
-            %>
-            <div class="message-box msg-error">
-                <%= error%>
-            </div>
-            <% } %>
-
-            <%
-                String message = (String) request.getAttribute("MESSAGE");
-                if (message != null && !message.isEmpty()) {
-            %>
-            <div class="message-box msg-success">
-                <%= message%>
-            </div>
-            <% }%>
 
             <div style="height: 50px;"></div>
         </div>

@@ -1,201 +1,318 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #10b981;      /* Xanh lá (Success) cho nút Confirm */
-    --secondary: #64748b;    /* Xám cho nút View Cart */
-    --bg-light: #f8fafc;
+    --primary: #10b981;       /* Xanh lá (Confirm) */
+    --primary-dark: #059669;
+    --highlight: #dc2626;     /* Đỏ đậm (Tổng tiền) */
+    --text-dark: #1e293b;
+    --bg-gray: #f3f4f6;
     --white: #ffffff;
-    --text-dark: #0f172a;
     --border: #cbd5e1;
 }
 
+/* =========================================
+   CẤU TRÚC CHUNG & DESKTOP
+   ========================================= */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #e2e8f0; /* Nền xám đậm hơn chút để nổi content */
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     flex-direction: column;
+    align-items: center; /* Căn giữa mọi thứ theo trục dọc */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
-/* Tiêu đề trang */
 h1 {
-    color: var(--text-dark);
+    font-size: 28px;
+    font-weight: 700;
     margin-bottom: 30px;
-    font-size: 2rem;
-    text-align: center;
-}
-
-h2 {
+    text-transform: uppercase;
     color: var(--text-dark);
-    margin: 20px 0;
-    text-align: right; /* Tổng tiền căn phải */
-    width: 100%;
-    max-width: 800px;
+    letter-spacing: 1px;
 }
 
-/* Style cho bảng (Table) */
+/* --- BẢNG (DESKTOP) --- */
 table {
     width: 100%;
-    max-width: 800px; /* Giới hạn chiều rộng cho đẹp */
+    max-width: 800px;
     border-collapse: collapse;
     background-color: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
 }
 
 table thead {
-    background-color: var(--text-dark);
-    color: var(--white);
+    background-color: #1e293b;
+    color: white;
 }
-
 table th {
-    padding: 15px;
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: 1px;
+    padding: 18px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
-
 table td {
-    padding: 15px;
-    border-bottom: 1px solid var(--border);
+    padding: 18px;
     text-align: center;
-    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+    color: #475569;
 }
-
 table tr:last-child td {
     border-bottom: none;
 }
 
-/* --- XỬ LÝ NÚT BẤM (QUAN TRỌNG) --- */
-/* Vì JSP không có class cho nút, ta dùng Attribute Selectors */
+/* --- TỔNG TIỀN (NỔI BẬT) --- */
+h2 {
+
+    text-align: right;        /* Chữ nằm bên phải */
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--highlight);  /* Màu đỏ nổi bật */
+    letter-spacing: -0.5px;
+}
+
+/* --- KHU VỰC NÚT BẤM (DESKTOP) --- */
+/* Tạo một vùng chứa ảo để căn giữa 2 form */
+/* Vì trên JSP 2 form nằm cạnh nhau, ta style trực tiếp cho form */
 
 form {
-    display: inline-block; /* Để các nút nằm ngang hàng hoặc canh chỉnh dễ hơn */
-    margin: 10px;
+    display: flex; /* Để nằm ngang hàng */
+    justify-content: center;
+    margin: 0 10px;        /* Khoảng cách giữa 2 nút */
 }
 
-/* Style chung cho nút Submit */
 input[type="submit"] {
-    border: none;
+    padding: 0 40px;
+    height: 50px;
+    line-height: 46px;
     border-radius: 8px;
-    padding: 12px 30px;
-    font-family: 'Poppins', sans-serif;
+    font-family: inherit;
     font-weight: 600;
-    font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 15px;
+    box-sizing: border-box;
 }
 
-/* Style riêng cho nút Confirm (Dựa vào value="Confirm") */
+/* Nút Confirm */
 input[type="submit"][value="Confirm"] {
-    background-color: var(--primary);
+    background: var(--primary);
     color: white;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
 }
-
 input[type="submit"][value="Confirm"]:hover {
-    background-color: #059669;
+    background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35);
 }
 
-/* Style riêng cho nút View Cart (Dựa vào value="View Cart") */
+/* Nút View Cart */
 input[type="submit"][value="View Cart"] {
-    background-color: var(--white);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
+    background: white;
+    color: #64748b;
+    border: 2px solid var(--border);
 }
-
 input[type="submit"][value="View Cart"]:hover {
-    background-color: var(--secondary);
-    color: var(--white);
+    border-color: #475569;
+    color: #1e293b;
+    background: #f8fafc;
 }
 
-/* Style cho thông báo lỗi */
+/* Thông báo lỗi */
 font[color="red"] {
     display: block;
-    background-color: #fee2e2;
+    background: #fee2e2;
     color: #b91c1c;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #fecaca;
+    width: 100%;
     max-width: 800px;
+    box-sizing: border-box;
     text-align: center;
-    border: 1px solid #fca5a5;
-    font-weight: 500;
 }
-
-/* Link quay lại khi giỏ hàng trống */
 a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 600;
 }
-a:hover {
-    text-decoration: underline;
-}
 
-/* --- RESPONSIVE CHO MOBILE (Thêm vào cuối file) --- */
+/* =========================================
+   MOBILE LAYOUT (GIỮ NGUYÊN BẢN ĐẸP)
+   ========================================= */
 @media screen and (max-width: 768px) {
+
     body {
-        padding: 20px 10px;     /* Thêm chút khoảng cách lề */
-        justify-content: flex-start; /* Đẩy nội dung lên trên thay vì giữa */
-        height: auto;           /* Cho phép trang dài ra để cuộn */
+        padding: 15px;
+        display: block; /* Reset flex để flow tự nhiên */
+        text-align: left;
+        padding-bottom: 40px;
     }
 
     h1 {
-        font-size: 24px;
-        margin-top: 20px;
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        text-align: center;
     }
 
-    /* Xử lý bảng hóa đơn: Cho cuộn ngang */
-    table {
+    /* --- HÓA ĐƠN DẠNG GRID --- */
+    table, tbody {
         display: block;
         width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        margin-bottom: 20px;
+        background: transparent;
+        box-shadow: none;
     }
-    
-    table th, table td {
-        padding: 12px;       /* Giảm padding ô chút cho đỡ tốn chỗ */
+    thead {
+        display: none;
     }
 
-    /* Tổng tiền căn giữa */
+    tr {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        grid-template-areas:
+            "no no no no"
+            "name name name name"
+            "price qty gap total";
+        gap: 8px;
+
+        background: #fff;
+        margin-bottom: 25px;
+        padding: 20px 25px;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid #f1f5f9;
+        border-bottom: 4px double #cbd5e1;
+    }
+
+    td {
+        display: block;
+        padding: 0;
+        border: none;
+        text-align: left;
+    }
+
+    /* No. */
+    td:nth-of-type(1) {
+        grid-area: no;
+        font-weight: 700;
+        color: #333;
+        font-size: 14px;
+        border-bottom: 1px dashed #e2e8f0;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    }
+    td:nth-of-type(1)::before {
+        content: "No. ";
+    }
+    td:nth-of-type(2) {
+        display: none;
+    }
+
+    /* Tên SP */
+    td:nth-of-type(3) {
+        grid-area: name;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-dark);
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    /* Giá - Số lượng - Tổng */
+    td:nth-of-type(4) {
+        grid-area: price;
+        font-weight: 500;
+        color: #64748b;
+        font-size: 14px;
+    }
+    td:nth-of-type(4)::after {
+        content: " x ";
+        margin: 0 4px;
+    }
+
+    td:nth-of-type(5) {
+        grid-area: qty;
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+    }
+
+    td:nth-of-type(6) {
+        grid-area: total;
+        justify-self: end;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--text-dark);
+    }
+    td:nth-of-type(6)::before {
+        content: "=  ";
+        color: #94a3b8;
+        font-weight: 400;
+        margin-right: 8px;
+    }
+    td:nth-of-type(6)::after {
+        content: " $";
+        font-size: 14px;
+    }
+
+    /* --- TỔNG TIỀN MOBILE --- */
     h2 {
-        text-align: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         font-size: 20px;
-        margin-bottom: 30px;
-    }
-
-    /* --- Nút bấm to, xếp dọc --- */
-    form {
-        display: block;      /* Form chiếm hết dòng */
+        margin: 0 0 30px 0;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        margin: 10px 0;      /* Cách nhau ra */
-    }
-
-    input[type="submit"] {
-        width: 100%;         /* Nút to 100% chiều ngang */
-        padding: 16px;       /* Nút dày dễ bấm */
-        font-size: 18px;     /* Chữ to */
-        margin: 0;           /* Bỏ margin cũ */
         box-sizing: border-box;
     }
 
-    /* Nút Confirm (Màu xanh) */
-    input[type="submit"][value="Confirm"] {
-        margin-bottom: 10px; /* Cách nút dưới 1 đoạn */
+    /* --- NÚT BẤM MOBILE (50-50) --- */
+    form {
+        display: inline-block;
+        width: 48%;
+        margin: 0;
+        vertical-align: top;
     }
-    
-    /* Font chữ thông báo lỗi to hơn */
-    font[color="red"] {
-        font-size: 14px;
-        padding: 10px;
+
+    /* Confirm (Trái) */
+    form:nth-last-of-type(2) {
+        float: left;
+    }
+    /* View Cart (Phải) */
+    form:last-of-type {
+        float: right;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 0;
+        height: 52px;
+        line-height: 52px;
+        font-size: 15px;
+        box-shadow: none;
+    }
+
+    body::after {
+        content: "";
+        display: table;
+        clear: both;
     }
 }

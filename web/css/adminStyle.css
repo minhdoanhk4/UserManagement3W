@@ -287,3 +287,117 @@ table a:hover {
         font-size: 16px;
     }
 }
+
+/* --- RESPONSIVE MOBILE (CARD VIEW) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Header: Xếp dọc */
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        border-left: none; /* Bỏ border trái cho đỡ chật */
+        border-top: 5px solid var(--primary); /* Chuyển lên trên */
+    }
+
+    .center-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .header-search-form {
+        width: 100%;
+        display: flex;
+        gap: 5px;
+    }
+
+    .header-search-form input[type="text"] {
+        width: 100%; /* Input co giãn hết cỡ */
+        flex: 1;
+    }
+
+    .logout-btn {
+        width: 100%;
+    }
+
+    /* --- BIẾN BẢNG THÀNH THẺ (CARD) --- */
+    .table {
+        background: transparent; /* Bỏ nền trắng của khung bao */
+        box-shadow: none;
+        padding: 0;
+    }
+
+    table thead {
+        display: none; /* Ẩn tiêu đề cột */
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    table tr {
+        background: var(--white);
+        margin-bottom: 15px;
+        border-radius: 12px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        border: 1px solid var(--border);
+        padding: 15px;
+        position: relative;
+    }
+
+    table td {
+        text-align: right; /* Giá trị nằm bên phải */
+        padding: 8px 0;
+        border-bottom: 1px dashed #eee;
+        display: flex;
+        justify-content: space-between; /* Nhãn trái - Giá trị phải */
+        align-items: center;
+        min-height: 35px;
+    }
+
+    table td:last-child {
+        border-bottom: none;
+        justify-content: flex-end; /* Nút bấm căn phải */
+        gap: 10px;
+    }
+
+    /* Tạo nhãn giả lập (Label) bên trái */
+    table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--secondary);
+        font-size: 13px;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    /* Gán tên cột (Khớp với admin.jsp) */
+    table td:nth-of-type(1)::before { content: "No."; }
+    table td:nth-of-type(2)::before { content: "User ID"; }
+    table td:nth-of-type(3)::before { content: "Full Name"; }
+    table td:nth-of-type(4)::before { content: "Role"; }
+    table td:nth-of-type(5)::before { content: "Password"; }
+    table td:nth-of-type(6)::before { content: "Action"; }
+    table td:nth-of-type(7)::before { content: "Delete"; }
+
+    /* Input trong bảng */
+    table input[type="text"] {
+        text-align: right;
+        width: 100%;
+        max-width: 150px; /* Giới hạn chiều rộng input để không vỡ */
+    }
+
+    /* Nút Update/Delete */
+    table input[type="submit"], table a {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}

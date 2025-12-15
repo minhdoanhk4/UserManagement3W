@@ -73,13 +73,13 @@
                 %>
             </tbody>
         </table>
-        <h2>Total Amount: <%= total%>$</h2>
+                <h2>
+                    Total Amount:<%= total%>$
+                </h2>
 
         <form action="MainController" method="POST">
             <input type="submit" value="Confirm" name="action"/>
         </form>
-
-        <br/>
 
         <form action="MainController">
             <input type="submit" value="View Cart" name="action" />
