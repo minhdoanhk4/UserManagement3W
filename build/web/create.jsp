@@ -43,10 +43,6 @@
                                placeholder="Enter your Full Name"/>
                         <font color="red"><%= userError.getFullNameError()%></font>
                     </p>
-                    <p>Role ID *
-                        <input type="text" name="txtRoleID" value="" required="" 
-                               placeholder="Enter your Role ID"/>
-                    </p>
                     <p>New Password *
                         <input type="password" name="txtPassword" value="" required="" 
                                placeholder="Enter new password"/>
@@ -55,6 +51,10 @@
                         <input type="password" name="txtConfirmPass" value="" required="" 
                                placeholder="Confirm new password"/>
                         <font color="red"><%= userError.getConfirmdError()%></font>
+                    </p>
+                    <p>Role ID *
+                        <input type="text" name="txtRoleID" value="" required="" 
+                               placeholder="Enter your Role ID"/>
                     </p>
 
                     <div class="g-recaptcha" data-sitekey="6LfI_CEsAAAAAAtyYU9q44iS1M9E_yV4-jxZMQoD"></div>

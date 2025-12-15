@@ -6,11 +6,9 @@
     --white: #ffffff;
     --text-dark: #1f2937;
     --danger: #ef4444;
+    --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================================
-   THIẾT LẬP CHUNG & GIAO DIỆN MOBILE (Mặc định)
-   ========================================= */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -19,55 +17,55 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Thêm padding để không bị sát lề trên mobile */
+    padding: 15px;
     box-sizing: border-box;
 }
 
+/* --- [SỬA LẠI] Container để Footer luôn nằm dưới --- */
 .container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Quan trọng: Xếp dọc các phần tử */
+    align-items: center;    /* Căn giữa trục dọc */
 }
 
+/* Box chính */
 .boxReset {
     background: var(--white);
-    padding: 30px 40px;
+    padding: 25px 20px;
     border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     border-top: 5px solid var(--primary);
-
-    /* Mặc định cho Mobile: Dọc và hẹp */
+    
     width: 100%;
-    max-width: 450px;
+    max-width: 420px; 
     box-sizing: border-box;
-    transition: max-width 0.3s ease; /* Hiệu ứng mượt khi đổi màn hình */
+    transition: all 0.3s ease;
 }
 
 .boxReset h1 {
     color: var(--text-dark);
     text-align: center;
     margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 28px;
+    margin-bottom: 20px;
+    font-size: 24px;
     font-weight: 600;
 }
 
-/* Style cho các thẻ <p> chứa input */
 .boxReset p {
-    margin: 0 0 15px 0; /* Khoảng cách dưới mỗi ô nhập */
+    margin: 0 0 12px 0;
     font-weight: 500;
     color: #374151;
-    font-size: 14px;
-    display: flex;       /* Dùng flex để xếp input xuống dòng gọn gàng */
-    flex-direction: column;
-    gap: 6px;            /* Khoảng cách giữa Text label và Input */
+    font-size: 13px;
+    display: flex;       
+    flex-direction: column; 
+    gap: 4px;
 }
 
-/* Input styles */
 .boxReset input[type="text"],
 .boxReset input[type="password"] {
     width: 100%;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 14px;
@@ -84,52 +82,51 @@ body {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-/* Recaptcha */
 .g-recaptcha {
-    margin: 15px 0;
+    margin: 10px 0;
     display: flex;
     justify-content: center;
+    transform: scale(0.9);
+    transform-origin: center;
 }
 
-/* Warning Text Box */
 .warning-text {
     background: #fef2f2;
-    padding: 12px;
+    padding: 10px 12px;
     border-radius: 8px;
     border-left: 4px solid var(--danger);
-    font-size: 12px;
+    font-size: 11px;
     color: #991b1b;
-    margin-bottom: 20px;
-    line-height: 1.5;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    text-align: justify;
 }
 
-/* Button Container */
 .btn-container {
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 .btn-container input[type="submit"],
 .btn-container input[type="button"] {
     flex: 1;
-    padding: 12px;
+    padding: 10px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     transition: 0.2s;
 }
 
 .btn-container input[type="submit"] {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
 }
 .btn-container input[type="submit"]:hover {
     background: #4338ca;
-    transform: translateY(-1px);
 }
 
 .btn-container input[type="button"] {
@@ -140,86 +137,76 @@ body {
     background: #e5e7eb;
 }
 
+/* --- [CHỈNH LẠI] Footer --- */
 .footer {
-    margin-top: 20px;
-    color: rgba(255,255,255,0.8);
-    font-size: 12px;
+    margin-top: 25px; /* Tăng khoảng cách với box cho thoáng */
+    color: rgba(255,255,255, 0.85); /* Màu chữ rõ hơn chút */
+    font-size: 13px; /* Tăng size chữ footer lên chút */
     text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho dễ đọc trên nền gradient */
 }
 
-/* Error text styling (thẻ font) */
 font[color="red"] {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     margin-top: 2px;
-    display: block; /* Để lỗi xuống dòng nếu cần */
+    display: block;
 }
 
 /* =========================================
-   GIAO DIỆN DESKTOP (Màn hình > 768px)
-   Chuyển sang dạng NGANG (2 cột)
+   DESKTOP: Giao diện ngang (Recaptcha + Confirm cùng hàng)
    ========================================= */
 @media (min-width: 768px) {
-
-    /* 1. Mở rộng khung chứa để đủ chỗ cho 2 cột */
     .boxReset {
-        max-width: 850px;
+        max-width: 780px; 
+        padding: 30px 40px; 
     }
 
-    /* 2. Biến thẻ Form thành Grid Layout */
+    .boxReset h1 {
+         margin-bottom: 25px;
+         font-size: 26px;
+    }
+
     .boxReset form {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Chia 2 cột bằng nhau */
-        column-gap: 30px; /* Khoảng cách cột */
-        row-gap: 10px;    /* Khoảng cách hàng */
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px; 
+        row-gap: 10px;    
     }
 
-    /* 3. Xử lý các phần tử cần nằm FULL 1 dòng */
-
-    /* Recaptcha nằm giữa và full dòng */
+    /* Recaptcha tự động sang cột 2, đẩy xuống để ngang hàng với input bên trái */
     .boxReset form .g-recaptcha {
-        grid-column: 1 / -1;
-        justify-self: center;
-        margin-top: 10px;
+        grid-column: auto; 
+        justify-self: center; 
+        margin-top: 22px; 
+        margin-bottom: 0;
+        transform: scale(0.9);
+        transform-origin: top center;
     }
-
-    /* Warning Text full dòng */
-    .boxReset form .warning-text {
+    
+    .boxReset form .warning-text,
+    .boxReset form .btn-container,
+    .boxReset form > font { 
         grid-column: 1 / -1;
     }
-
-    /* Button Container full dòng */
-    .boxReset form .btn-container {
-        grid-column: 1 / -1;
-    }
-
-    /* Các thẻ <font> báo lỗi chung nằm trực tiếp trong form (nếu có) */
-    .boxReset form > font {
-        grid-column: 1 / -1;
-        text-align: center;
-    }
-
-    /* Tùy chỉnh (Optional): Nếu muốn ô "Confirm Password" (ô lẻ thứ 5) nằm full dòng cho đẹp */
-    /* .boxReset form p:nth-of-type(5) {
-        grid-column: 1 / -1; 
-    } */
+    
+    .boxReset form > font { text-align: center; }
 }
 
 /* =========================================
-   TỐI ƯU CHO MOBILE MÀN HÌNH NHỎ (< 480px)
+   MOBILE
    ========================================= */
 @media screen and (max-width: 480px) {
-    .boxReset {
-        padding: 20px;
-    }
-
-    .btn-container {
-        flex-direction: column; /* Nút xếp dọc trên đt nhỏ */
-    }
-
+    .boxReset h1 { font-size: 22px; }
+    .btn-container { flex-direction: column; }
     .btn-container input[type="submit"],
-    .btn-container input[type="button"] {
-        width: 100%;
-        padding: 14px;
+    .btn-container input[type="button"] { width: 100%; padding: 12px; }
+    
+    /* Chỉnh footer trên mobile */
+    .footer {
+        font-size: 11px;
+        margin-top: 20px;
+        padding: 0 20px;
+        line-height: 1.5;
     }
 }
