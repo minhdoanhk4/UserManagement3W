@@ -192,6 +192,10 @@ public class UserDAO {
 
     private static final String DELETE = "DELETE FROM \"tblUsers\" "
             + "WHERE \"userID\" = ?";
+    private static final String DELETE_ORDER_DETAIL = "DELETE FROM \"tblOrderDetail\" "
+            + "WHERE \"userID\" = ?";
+    private static final String DELETE_ORDER = "DELETE FROM \"tblOrder\" "
+            + "WHERE \"userID\" = ?";
 
     public boolean deleteUser(String user)
             throws ClassNotFoundException, SQLException {
@@ -201,18 +205,42 @@ public class UserDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
+                // 1. Bắt đầu Transaction để đảm bảo xóa sạch hoặc không xóa gì cả
+                conn.setAutoCommit(false); 
+
+                // BƯỚC 1: Xóa chi tiết đơn hàng trước (Bảng con nhỏ nhất)
+                ptm = conn.prepareStatement(DELETE_ORDER_DETAIL);
+                ptm.setString(1, user);
+                ptm.executeUpdate();
+                ptm.close(); // Đóng statement để tái sử dụng biến
+
+                // BƯỚC 2: Xóa đơn hàng (Bảng con)
+                ptm = conn.prepareStatement(DELETE_ORDER);
+                ptm.setString(1, user);
+                ptm.executeUpdate();
+                ptm.close();
+
+                // BƯỚC 3: Xóa User (Bảng cha) - Giờ mới xóa được
                 ptm = conn.prepareStatement(DELETE);
                 ptm.setString(1, user);
                 check = ptm.executeUpdate() > 0;
-
+                
+                // 2. Xác nhận Transaction thành công
+                conn.commit();
             }
-        } finally {
-            if (ptm != null) {
-                ptm.close();
-            }
+        } catch (Exception e) {
+            // 3. Nếu có lỗi thì hoàn tác (Rollback)
             if (conn != null) {
-                conn.close();
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) ptm.close();
+            if (conn != null) conn.close();
         }
         return check;
     }
