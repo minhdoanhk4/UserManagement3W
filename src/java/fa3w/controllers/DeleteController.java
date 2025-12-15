@@ -26,6 +26,7 @@ public class DeleteController extends HttpServlet {
     private static final String ERROR = "SearchController";
     private static final String DELETE_LOGIN = "Unavailable because you are logged into the system!?";
     private static final String DELETE_ERROR = "Delete fail!!!";
+    private static final String SESSION_TIMEOUT = "Session timed out! Please login again.";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,9 +45,18 @@ public class DeleteController extends HttpServlet {
             String userID = request.getParameter("userID");
             UserDTO loginUser = (UserDTO) request.getSession().getAttribute("LOGIN_USER");
 
-            if (loginUser != null && loginUser.getUserID().trim().equalsIgnoreCase(userID.trim())) {
+            // BƯỚC 1: KIỂM TRA SESSION TRƯỚC TIÊN
+            // Nếu không có user đăng nhập, chặn ngay lập tức.
+            if (loginUser == null) {
+                request.setAttribute("ERROR", SESSION_TIMEOUT);
+            } 
+            // BƯỚC 2: KIỂM TRA TRÙNG ID (Xóa chính mình)
+            // Sử dụng trim() và equalsIgnoreCase() để xử lý trường hợp "Admin" vs "admin"
+            else if (loginUser.getUserID().trim().equalsIgnoreCase(userID.trim())) {
                 request.setAttribute("ERROR", DELETE_LOGIN);
-            } else {
+            } 
+            // BƯỚC 3: THỰC HIỆN XÓA (Chỉ khi đã qua 2 bước trên)
+            else {
                 if (new UserDAO().deleteUser(userID)) {
                     url = SUCCESS;
                 } else {
