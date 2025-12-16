@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div style="background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+            <div style=" color: #b91c1c; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
                 ${requestScope.ERROR}
             </div>
 
